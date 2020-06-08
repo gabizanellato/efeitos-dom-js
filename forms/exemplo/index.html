@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Forms </title>
+</head>
+<body>
+
+  <style>
+    label{
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      margin-top: 1rem;
+    }
+
+    form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input, textarea{
+      width: 100%;
+      box-sizing: border-box;
+      padding: .5rem;
+      border: 2px solid #000;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    textarea{
+      height: 150px;
+    }
+
+    .invalido{
+      border-color: red;
+    }
+
+
+  </style>
+  <form name="contato" id="contato">
+    <label for="nome"> Nome </label>
+    <input type="text" name="nome" id="nome" required>
+    <span class="erro"></span>
+    <label for="email"> Email </label>
+    <input type="email" name="email" id="email" required>
+    <span class="erro"></span>
+    <label for="mensagem"> Mensagem </label>
+    <textarea name="mensagem" id="mensagem"></textarea>
+    <select name="cores" id="cores">
+      <option value="blue"> Azul </option>
+      <option value="red"> Vermelho </option>
+      <!-- tipos de input -->
+      <input type="color">
+      <input type="date">
+      <input type="number">
+    </select>
+    <input type="checkbox" value="identidade" id="identidade">
+    <label for="identidade"> Possui identidade?</label>
+    <input type="radio" value="guitarra" id="guitarra" name="guitarra" name="intrumentos">
+    <label for="guitarra"> Guitarra </label>
+    <input type="radio" value="baixo" id="baixo" name="baixo" name="intrumentos">
+    <label for="baixo"> Baixo </label>
+  </form>
+  <span class="texto"></span>
+
+  <script>
+    const contato = document.querySelector('#contato')
+    const texto = document.querySelector('.texto')
+    console.log(contato) // formulario contato e seus elementos, puxado por nome ou id
+    console.log(document.forms[0]) // primeiro formulario da pagina
+    function handleKeyUp (event){
+      if(event.target.checked){
+        console.log(event.target.value)
+      }
+      const target = event.target // facilita o uso do target
+      document.body.style.backgroundColor = event.target.value // altera cor do fundo de acordo com o value
+
+      // captura todos os dados do formulario
+      const dados = {}
+      function handleChange(event){
+        dados[event.target.name] = event.target.value
+      }
+
+      if(!target.checkValidity()){
+        target.classList.add('invalido');
+        contato.nome.setCustomValidity('O nome é importante')
+        target.nextElementSibling.innerText = target.validationMessage
+      }
+      console.log(event.target.checkValidity()) // checa se esta valido, exemplo, se possui @ no email
+      console.log(event.target.value) // console com valor do formulario
+      texto.innerText = event.target.value // span com valor do formulario
+    }
+    contato.addEventListener('change', handleKeyUp) // mudança no formulario
+  </script>
+</body>
+</html>

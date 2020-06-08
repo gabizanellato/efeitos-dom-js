@@ -1,0 +1,5 @@
+/* Font IBM*/
+@font-face{
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBM/IBMPlexMono-Regular.ttf') format(ttf)
+}
