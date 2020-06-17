@@ -1,0 +1,224 @@
+/* Geral */
+body, h1, h2, h3, ul, li, p, dd, dt, dl{
+  margin: 0px;
+  padding: 0px;
+}
+
+ul li {
+  list-style: none;
+}
+
+img{
+  display: block;
+  max-width: 100%;
+}
+
+body{
+  background: #faf6ed;
+  color: #222;
+  display: grid;
+  grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr; 
+  /* as colunas separadas em 4 */
+  -webkit-font-smoothing: antialiased; /* fonte suavizada */
+}
+
+html.texto-maior{
+  font-size: 120%
+}
+
+
+/* Menu */
+.menu{
+  background: #fb5;
+  grid-column: 3 / 5;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.menu ul{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.menu li a {
+  color: #222;
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: bold;
+  letter-spacing: .1em; 
+  margin-right: 10px;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* Grid Sections */
+.grid-section{
+  box-sizing: border-box;
+  display: grid;
+  grid-column: 2 / 4;
+  grid-gap: 20px;
+  grid-template-columns: 100px 300px 1fr;
+  margin-bottom: 4rem;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Titulos */
+.titulo{
+  font-family: 'Playfair Display SC', georgia;
+  font-size: 6rem;
+  font-weight: normal;
+  grid-column: 1 / 4;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+/* Seção conteudo fotos */
+.animais h2{
+  color: #e54;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.animais h2::before{
+  background: #fb5;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.animais p{
+  font-family: Helvetica, Arial;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.animais-descricao{
+  grid-column: 3;
+}
+
+.animais-descricao section{
+  margin-bottom: 3rem;
+}
+
+
+/* Imagens */
+.animais-lista{
+  grid-column: 2;
+  height: 370px;
+  overflow-y: scroll;
+}
+
+.animais-lista::-webkit-scrollbar{
+  width: 18px;
+}
+
+.animais-lista::-webkit-scrollbar-thumb{
+  background: #fb5;
+  border-left: 4px solid #faf6ed;
+  border-right: 4px solid #faf6ed;
+}
+
+.animais-lista::-webkit-scrollbar-track{
+  background: #faf6ed;
+}
+
+/* Seção FAQ */
+.faq-lista{
+  grid-column: 2 / 4;
+}
+
+.faq-lista dt{
+  color: #e54;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  margin-bottom: .5rem;
+  margin-top: 2rem;
+}
+
+.faq-lista dt::before{
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  background: #fb5;
+}
+
+.faq-lista dd{
+  font-family: Helvetica, Arial;
+  margin-bottom: .5rem;
+  margin-left: 30px
+}
+
+/* Seção Contato */
+.mapa{
+  grid-column: 2;
+}
+
+.dados{
+  grid-column: 3;
+}
+
+.dados li{
+  font-family: Helvetica, Arial;
+  margin-bottom: 1rem;
+}
+
+.dados li::before{
+  background: #fb5;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  margin-right: 10px;
+  width: 20px;
+}
+
+.copy{
+  background: #fb5;
+  grid-column: 3 / 5 ;
+  margin-bottom: 2rem;
+}
+
+.copy p{
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 700px){
+  body{
+    grid-template-columns: 1fr;
+  }
+  .menu, .grid-section, .copy{
+    grid-column: 1;
+  }
+  .grid-section{
+    grid-gap: 10px;
+    grid-template-columns: 100px 1fr;
+  }
+  .animais-lista{
+    grid-column: 1;
+  }
+  .faq-lista, .dados, .mapa{
+    grid-column: 1 / 3;
+  }
+  .grid-section h1{
+    font-size: 3rem;
+  }
+  .menu{
+    margin-top: 0px;
+  }
+  .copy{
+    margin-bottom: 0px;
+  }
+}
